@@ -13,3 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/','IndexController@index');
+Route::get('/video','VideoController@index');
+Route::get('/block','BlockController@index');
+
+Route::post('/video/upload','VideoUploadController@upload');

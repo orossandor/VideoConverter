@@ -14,7 +14,10 @@
 
     @else
 
-
+        <form action="video" method="POST">
+            @csrf
+            <button type="submit">Delete</button>
+        </form>
 
     @endif
 

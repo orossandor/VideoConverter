@@ -10,6 +10,7 @@ class IndexController extends Controller
     public function __construct()
     {
         Session::put('origname','undefined');
+        Session::put('extension','undefined');
         Session::put('id','undefined');
         Session::put('status','not-uploaded');
     }
@@ -19,4 +20,6 @@ class IndexController extends Controller
         $status = Session::get('status');
         return view('video.index',['status' => $status ]);
     }
+
+
 }

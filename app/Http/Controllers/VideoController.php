@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Session;
 
 class VideoController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
         $origname = Session::get('origname');
         $id = Session::get('id');

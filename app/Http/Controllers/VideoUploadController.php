@@ -16,8 +16,8 @@ class VideoUploadController extends Controller
 
         if ( $status == 'not-uploaded' ){
             $origname = $request->video->getClientOriginalName();
-            $extension = $request->video->guessExtension();
-            $id = Str::random(11);
+            Session::put('extension', $extension = $request->video->guessExtension());
+            Session::put('id', $id = Str::random(11)) ;
             $request->video->storeAs('public', $id.'.'.$extension);
             if ( file_exists( (storage_path('app\\public\\'.$id.'.'.$extension)) ) ) Session::put('status','uploaded');
         }

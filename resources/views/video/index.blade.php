@@ -10,5 +10,6 @@
         @csrf
         <button type="submit">Upload</button>
     </form>
+    <a href="/video">Check video status</a>
 
 @endsection

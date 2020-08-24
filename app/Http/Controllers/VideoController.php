@@ -3,10 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class VideoController extends Controller
 {
     public function index(){
-        return view('video.video');
+
+        $origname = Session::get('origname');
+        $id = Session::get('id');
+        $status = Session::get('status');
+
+        return view('video.video', ['origname' => $origname,'id'=>$id,'status'=>$status ]);
     }
 }

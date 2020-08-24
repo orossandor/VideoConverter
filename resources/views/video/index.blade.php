@@ -5,7 +5,7 @@
 @section('content')
     <h1>Upload a new video</h1>
 
-    @if ( $status == "not-uploaded" )
+    @if ( isset($status) && $status == "not-uploaded" )
     <form action="video/upload" enctype="multipart/form-data" method="POST">
         <input type="file" name="video" id="video"><br>
         @csrf

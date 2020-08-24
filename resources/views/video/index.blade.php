@@ -13,7 +13,7 @@
     </form>
 
     @else
-
+        Succesful upload, video ID: {{$id}}
         <form action="video" method="POST">
             @csrf
             <button type="submit">Delete</button>

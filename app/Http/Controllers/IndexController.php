@@ -16,6 +16,7 @@ class IndexController extends Controller
 
     public function index()
     {
-        return view('video.index');
+        $status = Session::get('status');
+        return view('video.index',['status' => $status ]);
     }
 }

@@ -8,8 +8,9 @@
     @if ($status == "not-uploaded")
         <p>No video has uploaded yet!</p>
         <a href="/">Back to upload a video</a>
-    @else
-
+    @elseif ( $status == "uploaded" )
+        <p>Video has uploaded, but not converted yet!</p>
+        <a href="/">Back</a>
     @endif
 
 

@@ -22,12 +22,25 @@ class VideoUploadController extends Controller
         $status = Session::get('status');
 
         if ( $status == 'not-uploaded' ){
+            //Validate
+            $this->validate( $request, [
+                'video' => 'required|mimes:mpeg,mpg,mpe,qt,mov,avi,movie,3gp|max:4096'
+            ]);
+
+            //Session
             Session::put('origname', $request->video->getClientOriginalName());
             Session::put('extension', $extension = $request->video->guessExtension());
-            Session::put('id', $id = Str::random(11)) ;
+            Session::put('id', $id = Str::random(11));
+
+            //Upload
             $request->video->storeAs('public', $id.'.'.$extension);
-            if ( file_exists( (storage_path('app\\public\\'.$id.'.'.$extension)) ) ) Session::put('status','uploaded');
-            $this->startJobs($id,$extension);
+
+            //Check - Start job
+            if ( $request->video->isValid() ){
+                Session::put('status','uploaded');
+                $this->startJobs($id,$extension);
+            }
+
         }
 
         return redirect('/');

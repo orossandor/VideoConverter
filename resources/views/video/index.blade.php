@@ -6,6 +6,16 @@
     <h1>Upload a new video</h1>
 
     @if ( isset($status) && $status == "not-uploaded" )
+
+    @if (count($errors) > 0 )
+        Upload unsuccesful: <br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
     <form action="video/upload" enctype="multipart/form-data" method="POST">
         <input type="file" name="video" id="video"><br>
         @csrf

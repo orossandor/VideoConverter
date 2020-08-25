@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 
 class VideoUploadController extends Controller
 {
@@ -28,7 +29,7 @@ class VideoUploadController extends Controller
             ]);
 
             //Session
-            Session::put('origname', $request->video->getClientOriginalName());
+            Session::put('origname', $origname  =  $request->video->getClientOriginalName());
             Session::put('extension', $extension = $request->video->guessExtension());
             Session::put('id', $id = Str::random(11));
 
@@ -39,6 +40,7 @@ class VideoUploadController extends Controller
             if ( $request->video->isValid() ){
                 Session::put('status','uploaded');
                 $this->startJobs($id,$extension);
+                Log::info('Video uploaded, original name:  '.$origname.$extension.' , new ID: '.$id);
             }
 
         }

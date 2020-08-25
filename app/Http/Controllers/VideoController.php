@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class VideoController extends Controller
 {
     public function index()
     {
 
-        $origname = Session::get('origname');
         $id = Session::get('id');
         $status = Session::get('status');
         $result = false;
@@ -19,8 +19,9 @@ class VideoController extends Controller
         {
             Session::put('status','converted');
             $status = Session::get('status');
+            Log::info('Video status query, status: '.$status.' , ID: '.$id);
         }
-        return view('video.video', ['origname' => $origname,'id'=>$id,'status'=>$status ]);
+        return view('video.video', ['id'=>$id,'status'=>$status ]);
     }
 
     public function checkFiles($id){

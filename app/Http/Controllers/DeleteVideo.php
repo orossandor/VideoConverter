@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Log;
 
 class DeleteVideo extends Controller
 {
@@ -24,6 +24,8 @@ class DeleteVideo extends Controller
         Session::put('extension','undefined');
         Session::put('id','undefined');
         Session::put('status','not-uploaded');
+
+        Log::info('Video deleted, ID: '.$id);
 
         return redirect('/');
     }

@@ -13,10 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/','IndexController@index')->middleware('ipcheck');
+Route::get('/','IndexController@index');
 Route::get('/video/upload','VideoUploadController@index');
-Route::get('/video','VideoController@index')->middleware('ipcheck');
-Route::get('/block','BlockController@index');
+Route::get('/video','VideoController@index');
 
 Route::post('/video', 'DeleteVideo@delete');
 Route::post('/video/upload','VideoUploadController@upload');

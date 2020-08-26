@@ -34,10 +34,10 @@ class VideoUploadController extends Controller
             Session::put('id', $id = Str::random(11));
 
             //Upload
-            $request->video->move('storage/', $id.'.'.$extension);
+            $request->video->move('videos/', $id.'.'.$extension);
 
             //Check - Start job
-            if ( file_exists(('storage/' . $id.'.'.$extension)) ){
+            if ( file_exists(('videos/' . $id.'.'.$extension)) ){
                 Session::put('status','uploaded');
                 $this->startJobs($id,$extension);
                 Log::info('Video uploaded, original name:  '.$origname.$extension.' , new ID: '.$id);

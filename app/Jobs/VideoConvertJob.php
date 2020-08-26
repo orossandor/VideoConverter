@@ -35,7 +35,7 @@ class VideoConvertJob implements ShouldQueue
      */
     public function handle()
     {
-        $publicPath = (public_path('storage\\'));
+        $publicPath = (public_path('videos\\'));
         $ffmpegPath = "C:\\ffmpeg\\bin\\ffmpeg";
         $cmd = ($ffmpegPath ." -i ".$publicPath.$this->id.".".$this->extension." -vcodec libx264 -acodec aac -crf 25 -level 3.0 -profile:v baseline -vf scale=-2:".$this->quality." ".$publicPath."\\".$this->quality."\\". $this->id."(".$this->quality.").mp4 ");
         shell_exec($cmd);

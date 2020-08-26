@@ -10,12 +10,12 @@
         <a href="/">Back to upload a video</a>
     @elseif ( $status == "uploaded" )
         <p>Video has uploaded, but not converted yet!</p>
-        <img src=" {{ url('storage/working.gif') }} " alt="converting under process"><br>
+        <img src=" {{ url('video/working.gif') }} " alt="converting under process"><br>
         <a href="/">Back</a>
     @elseif ( $status == "converted" )
 
         <video width="720" controls>
-            <source src=" {{ url('storage/'.$quality.'/'.$id.'('.$quality.').mp4') }} " type="video/mp4">
+            <source src=" {{ url('video/'.$quality.'/'.$id.'('.$quality.').mp4') }} " type="video/mp4">
                 Your browser does not support the video tag.
         </video>
         <br>

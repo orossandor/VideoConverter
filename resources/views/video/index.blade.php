@@ -25,12 +25,20 @@
     @else
         Succesful upload, video ID: {{$id}}
         <form action="video" method="POST">
+            @method('DELETE')
             @csrf
             <button type="submit">Delete</button>
         </form>
 
     @endif
 
-    <a href="/video">Check video status</a>
+    <form action="/video" method="GET">
+        <select name="quality" id="">
+            <option value="720">720p</option>
+            <option value="360">360p</option>
+        </select>
+        <button type="submit">Request link</button>
+    </form>
+
 
 @endsection

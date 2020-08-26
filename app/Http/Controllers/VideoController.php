@@ -14,6 +14,8 @@ class VideoController extends Controller
         $status = Session::get('status');
         $result = false;
 
+        $quality = $_GET['quality'];
+
         if ( $status == "uploaded" ) $result = $this->checkFiles($id);
         if ( $result )
         {
@@ -21,12 +23,12 @@ class VideoController extends Controller
             $status = Session::get('status');
             Log::info('Video status query, status: '.$status.' , ID: '.$id);
         }
-        return view('video.video', ['id'=>$id,'status'=>$status ]);
+        return view('video.video', ['id'=>$id,'status'=>$status, 'quality' =>$quality ]);
     }
 
     public function checkFiles($id){
-        $path = (storage_path('app\\public\\'));
-        if ( file_exists( $path.$id.'(360).mp4' ) && file_exists( $path.$id.'(720).mp4' ) ) return true;
+        $path = (public_path('storage\\'));
+        if ( file_exists( $path."\\360\\".$id.'(360).mp4' ) && file_exists( $path."\\720\\".$id.'(720).mp4' ) ) return true;
         return false;
     }
 }

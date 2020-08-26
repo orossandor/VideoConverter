@@ -12,9 +12,9 @@ class DeleteVideo extends Controller
         $id = Session::get('id');
         $extension = Session::get('extension');
 
-        $video      = (storage_path('app\\public\\'.$id.'.'.$extension));
-        $video360   = (storage_path('app\\public\\'.$id.'(360).mp4'));
-        $video720   = (storage_path('app\\public\\'.$id.'(720).mp4'));
+        $video      = (public_path('storage\\'.$id.'.'.$extension));
+        $video360   = (public_path('storage\\360\\'.$id.'(360).mp4'));
+        $video720   = (public_path('storage\\720\\'.$id.'(720).mp4'));
 
         if ( file_exists( $video ) )    unlink($video);
         if ( file_exists( $video360 ) ) unlink($video360);

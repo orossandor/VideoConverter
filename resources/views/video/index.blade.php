@@ -32,10 +32,10 @@
 
     @endif
 
-    <form action="/video/{{$id}}" method="GET">
+    <form action="/video" method="GET">
         <select name="quality" id="">
-            <option value="720">720p</option>
-            <option value="360">360p</option>
+            <option value="720" {{ session('selectedQuality') == "720" ? 'selected' : '' }}>720p</option>
+            <option value="360" {{ session('selectedQuality') == "360" ? 'selected' : '' }}>360p</option>
         </select>
         <button type="submit">Request link</button>
     </form>

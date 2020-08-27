@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Redirect;
 
 class VideoController extends Controller
 {
@@ -15,7 +14,7 @@ class VideoController extends Controller
         $id = Session::get('id');
         $quality = $_GET['quality'];
 
-        return redirect()->back()->with('link', '/video/'.$quality.'/'.$id);
+        return redirect()->back()->with('link', '/video/'.$quality.'/'.$id)->with('selectedQuality', $quality);
 
     }
 

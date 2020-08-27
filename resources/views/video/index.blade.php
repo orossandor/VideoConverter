@@ -41,7 +41,7 @@
     </form>
 
     @if ( session('link'))
-        <a href="{{ session('link') }}">{{$id}}</a>
+        <a href="{{ session('link') }}" target="_blank">{{session('link')}}</a>
     @endif
 
 

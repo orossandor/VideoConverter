@@ -2,40 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
 class VideoController extends Controller
 {
-    public function index()
+    public function creatlink()
     {
 
         $id = Session::get('id');
         $quality = $_GET['quality'];
 
-        return redirect()->back()->with('link',  url('videos/'.$quality.'/'.$id.'('.$quality.').mp4'));
+        return redirect()->back()->with('link', '/video/'.$quality.'/'.$id);
 
-        /*
-        $id = Session::get('id');
-        $status = Session::get('status');
-        $result = false;
+    }
 
 
-        if ( $status == "uploaded" ) $result = $this->checkFiles($id);
-        if ( $result )
-        {
+    public function  showvideo(Request $request){
+        $pathToRequestedFile = public_path('videos/'.$request->quality.'/'.$request->id.'('.$request->quality.').mp4');
+
+        if(file_exists($pathToRequestedFile) && filesize($pathToRequestedFile) > 0 ) {
             Session::put('status', $status ='converted');
-            Log::info('Video status query, status: '.$status.' , ID: '.$id);
+            Log::info('Video status query, status: '.$status.' , ID: '.$request->id);
+            return response()->view('video.video', ['quality' => $request->quality, 'id' => $request->id],200);
+        } else {
+            return response()->view('video.working',['id' => $request->id],404);
         }
-        return view('video.video', ['id'=>$id,'status'=>$status, 'quality' =>$quality ]);
-        */
     }
-    /*
-    public function checkFiles($id){
-        $path = (public_path('storage\\'));
-        if ( file_exists( $path."\\360\\".$id.'(360).mp4' ) && file_exists( $path."\\720\\".$id.'(720).mp4' ) ) return true;
-        return false;
-    }
-    */
+
 }

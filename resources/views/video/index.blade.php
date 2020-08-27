@@ -8,7 +8,7 @@
     @if ( isset($status) && $status == "not-uploaded" )
 
     @if (count($errors) > 0 )
-        Upload unsuccesful: <br>
+        <p>Upload unsuccesful:</p>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -17,25 +17,25 @@
     @endif
 
     <form action="video/upload" enctype="multipart/form-data" method="POST">
-        <input type="file" name="video" id="video"><br>
+        <input type="file" name="video" id="video">
         @csrf
         <button type="submit">Upload</button>
     </form>
 
     @else
-        Succesful upload, video ID: {{$id}}
+        Succesful upload, video ID: <strong> {{$id}} </strong>
         <form action="/video" method="POST">
             @method('DELETE')
             @csrf
-            <button type="submit">Delete</button>
+            <button type="submit" class="delete">Delete video</button>
         </form>
 
     @endif
 
     <form action="/video" method="GET">
         <select name="quality" id="">
-            <option value="720" {{ session('selectedQuality') == "720" ? 'selected' : '' }}>720p</option>
-            <option value="360" {{ session('selectedQuality') == "360" ? 'selected' : '' }}>360p</option>
+            <option value="720" {{ session('selectedQuality') == "720" ? 'selected' : '' }} class="option">720p</option>
+            <option value="360" {{ session('selectedQuality') == "360" ? 'selected' : '' }} class="option">360p</option>
         </select>
         <button type="submit">Request link</button>
     </form>

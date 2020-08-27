@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #fefefe;
+    color: #333;
+    font-family: 'Open Sans', sans-serif;
+    margin-top: 50px;
+}
+
+.container {
+    max-width: 1280px;
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.container form {
+    margin: 20px 0;
+}
+
+.container h1 {
+    margin: 30px 0;
+}
+
+.container button,
+.conatiner input[type="file"],
+.container select {
+    widows: 80px;
+    height: 30px;
+    padding: 5px 15px;
+    transition: background-color .3s;
+}
+
+.container .delete {
+    background-color: #ff7870;
+    border: 0;
+}
+
+.container .delete:hover {
+    background-color: #fc4e45;
+}
+
+.container a {
+    text-decoration: underline;
+    color: #333;
+}

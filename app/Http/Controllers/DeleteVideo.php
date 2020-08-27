@@ -22,7 +22,7 @@ class DeleteVideo extends Controller
             if (file_exists($video360 )) unlink($video360);
             if (file_exists($video720 )) unlink($video720);
         } catch(Exception $ex){
-            return redirect()->back()->with('deleteMessage', 'File delete was not succesful! Try it later!');
+            return redirect()->back()->with('deleteMessageFail', 'File delete was not succesful! Try it later!');
         }
 
         Session::put('origname','undefined');
@@ -32,7 +32,7 @@ class DeleteVideo extends Controller
 
         Log::info('Video deleted, ID: '.$id);
 
-        return redirect('/');
+        return redirect()->back()->with('deleteMessageSucces', 'File was deleted succesfully!');
 
     }
 }

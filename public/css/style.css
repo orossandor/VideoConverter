@@ -57,3 +57,7 @@ body {
 .errorText {
     color: #ff7870;
 }
+
+.confirmText {
+    color: rgb(60, 184, 107);
+}

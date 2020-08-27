@@ -16,11 +16,17 @@
             </ul>
         @endif
 
+        @if (session('deleteMessageSucces'))
+                <p class="confirmText"> {{session('deleteMessageSucces')}} </p>
+        @endif
+
         <form action="video/upload" enctype="multipart/form-data" method="POST">
             <input type="file" name="video" id="video">
             @csrf
             <button type="submit">Upload</button>
         </form>
+
+
 
         @else
             Succesful upload, video ID: <strong> {{$id}} </strong>
@@ -30,8 +36,8 @@
                 <button type="submit" class="delete">Delete video</button>
             </form>
 
-            @if (session('deleteMessage'))
-                <p class="errorText"> {{session('deleteMessage')}} </p>
+            @if (session('deleteMessageFail'))
+                <p class="errorText"> {{session('deleteMessageFail')}} </p>
             @endif
 
             <form action="/video" method="GET">
@@ -47,7 +53,7 @@
 
 
     @if ( session('link'))
-        <a href="{{ session('link') }}" target="_blank">{{session('link')}}</a>
+        <a href="{{ session('link') }}" target="_blank" id="link">{{session('link')}}</a> <button id="copyButton">Copy</button>
     @endif
 
 

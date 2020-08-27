@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 
@@ -16,9 +17,13 @@ class DeleteVideo extends Controller
         $video360   = (public_path('videos\\360\\'.$id.'(360).mp4'));
         $video720   = (public_path('videos\\720\\'.$id.'(720).mp4'));
 
-        if ( file_exists( $video ) )    unlink($video);
-        if ( file_exists( $video360 ) ) unlink($video360);
-        if ( file_exists( $video720 ) ) unlink($video720);
+        try{
+            if (file_exists($video    )) unlink($video);
+            if (file_exists($video360 )) unlink($video360);
+            if (file_exists($video720 )) unlink($video720);
+        } catch(Exception $ex){
+            return redirect()->back()->with('deleteMessage', 'File delete was not succesful! Try it later!');
+        }
 
         Session::put('origname','undefined');
         Session::put('extension','undefined');
@@ -28,5 +33,6 @@ class DeleteVideo extends Controller
         Log::info('Video deleted, ID: '.$id);
 
         return redirect('/');
+
     }
 }

@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    list-style: none;
 }
 
 body {
@@ -16,6 +17,10 @@ body {
     display: block;
     margin: auto;
     text-align: center;
+}
+
+.container ul li {
+    color: #ff7870;
 }
 
 .container form {
@@ -47,4 +52,8 @@ body {
 .container a {
     text-decoration: underline;
     color: #333;
+}
+
+.errorText {
+    color: #ff7870;
 }

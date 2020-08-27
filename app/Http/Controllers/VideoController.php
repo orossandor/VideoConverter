@@ -22,7 +22,7 @@ class VideoController extends Controller
     public function  showvideo(Request $request){
         $pathToRequestedFile = public_path('videos/'.$request->quality.'/'.$request->id.'('.$request->quality.').mp4');
 
-        if(file_exists($pathToRequestedFile) && filesize($pathToRequestedFile) > 0 ) {
+        if(file_exists($pathToRequestedFile)) {
             Session::put('status', $status ='converted');
             Log::info('Video status query, status: '.$status.' , ID: '.$request->id);
             return response()->view('video.video', ['quality' => $request->quality, 'id' => $request->id],200);

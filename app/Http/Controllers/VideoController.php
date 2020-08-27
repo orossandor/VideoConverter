@@ -10,12 +10,11 @@ class VideoController extends Controller
 {
     public function creatlink()
     {
-
         $id = Session::get('id');
         $quality = $_GET['quality'];
 
+        //Return with $quality for option html tag
         return redirect()->back()->with('link', '/video/'.$quality.'/'.$id)->with('selectedQuality', $quality);
-
     }
 
 

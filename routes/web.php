@@ -14,9 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/','IndexController@index');
-Route::post('/video/upload','VideoUploadController@index');
 Route::get('/video','VideoController@creatlink');
 Route::get('/video/{quality}/{id}','VideoController@showvideo')->middleware('APIkey');
+Route::get('/video/upload','VideoUploadController@index');
+
+Route::post('/video/upload','VideoUploadController@upload');
 
 Route::delete('/video', 'DeleteVideo@delete');
-Route::post('/video/upload','VideoUploadController@upload');

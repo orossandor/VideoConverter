@@ -13,10 +13,12 @@ class DeleteVideo extends Controller
         $id = Session::get('id');
         $extension = Session::get('extension');
 
+        //Get files
         $video      = (public_path('videos\\'.$id.'.'.$extension));
         $video360   = (public_path('videos\\360\\'.$id.'(360).mp4'));
         $video720   = (public_path('videos\\720\\'.$id.'(720).mp4'));
 
+        //Delete
         try{
             if (file_exists($video    )) unlink($video);
             if (file_exists($video360 )) unlink($video360);
@@ -25,7 +27,6 @@ class DeleteVideo extends Controller
             return redirect()->back()->with('deleteMessageFail', 'File delete was not succesful! Try it later!');
         }
 
-        Session::put('origname','undefined');
         Session::put('extension','undefined');
         Session::put('id','undefined');
         Session::put('status','not-uploaded');

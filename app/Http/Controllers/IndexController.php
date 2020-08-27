@@ -9,10 +9,9 @@ class IndexController extends Controller
 {
     public function __construct()
     {
-        Session::put('origname','undefined');
-        Session::put('extension','undefined');
-        Session::put('id','undefined');
         Session::put('status','not-uploaded');
+        Session::put('id','undefined');
+        Session::put('extension','undefined');
     }
 
     public function index()

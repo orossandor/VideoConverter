@@ -27,7 +27,7 @@ class VideoUploadController extends Controller
         if ( $status == 'not-uploaded' ){
             //Validate
             $this->validate( $request, [
-                'video' => 'required|mimes:mpeg,mpg,mpe,qt,mov,avi,movie,3gp|max:40960'
+                'video' => 'required|mimes:mpeg,mpg,mpe,qt,mov,avi,movie,3gp, mkv, mp4|max:40960'
             ]);
 
             //Session

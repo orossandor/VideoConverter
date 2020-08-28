@@ -1,4 +1,4 @@
-# <p align="center">Video converter </p>
+# <p align="center">Video Converter </p>
 
 
 ## About the project
@@ -16,13 +16,13 @@ User can upload almost any type of video, and the application will convert it to
 
 ## Launch
 
-- To launch the project offline, a local server and MySql service is necessary
-- To convert the videos, queue worker must be started manually ("php artisan queue:work")
-- The conversion is made by FFmpeg, which location must be set corretly at: App\Http\Jobs\VideoConvertJob.php $ffmpegPath variable at line 39! 
-- To open the video, there is authentication:
+- To launch the project offline, a local server and MySql service are necessary
+- To convert videos, queue worker must be started manually ("php artisan queue:work")
+- The conversion is made by FFmpeg, which location must be set corretly at: App\Http\Jobs\VideoConvertJob.php $ffmpegPath variable at line 39
+- To open a video link, there is authentication:
     - Ip address: limited to 127.0.0.1
     - Api key: Head information must contain: APP_KEY= --the secret api key--
-    - Set these parameters at App\Http\Middleware\APIkey.php $secretKey and $acceptableIPs[]
+    - Set these parameters at App\Http\Middleware\APIkey.php $secretKey and $acceptableIPs[ ]
     - You can disable authentication with variable $EnableAuthentication
 
 ## Usage
@@ -37,12 +37,12 @@ User can upload almost any type of video, and the application will convert it to
 ## Error handling
 
  - Upload:
-    - "Upload failed!" message: General error while uploading
+    - "Upload failed!" message: General error while uploading, try again
     - "The video field is required." message: No file was selected
     - The video must be a file of type: mpeg, mpg, mpe, qt, mov, avi, movie, 3gp, mkv, mp4
     - Size: maximum 40960 kb
 
 - Delete: 
-    - "File delete was not succesful! Try it later!" : Video was used by the converter. 
+    - "File delete was not succesful! Try it later!" : Original video was used by the converter. Try it later.
 
 

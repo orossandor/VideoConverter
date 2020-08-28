@@ -26,7 +26,8 @@ class VideoController extends Controller
             Log::info('Video status query, status: '.$status.' , ID: '.$request->id);
             return response()->view('video.video', ['quality' => $request->quality, 'id' => $request->id],200);
         } else {
-            return response()->view('video.working',['id' => $request->id],404);
+            $defaultVideoPath = url('videos/working.gif');
+            return response()->view('video.working',['defaultVideoPath' => $defaultVideoPath],404);
         }
     }
 
